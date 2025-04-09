@@ -129,7 +129,7 @@ def process_results(result, url_map):
                 "source": doc.metadata.get('source', ''),
                 "metadata": {
                     "id": doc.id,
-                    "remote_testing": doc.metadata.get('remote_testing', False)
+                    "remote_testing": doc.metadata.get('remote_testing', False),
                     "adaptive_irt": doc.metadata.get('adaptive_irt', False),
                 }
             }
