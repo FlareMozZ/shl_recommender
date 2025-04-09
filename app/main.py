@@ -94,11 +94,11 @@ async def recommend_assessment(request: QueryRequest):
             extracted_jd = await model.jd_extraction_llm.ainvoke(
                 [HumanMessage(content=search_results)]
             )
-            print(search_results)
+            # print(search_results)
             final_query = search_results
 
         result = await model.qa_chain.ainvoke(final_query)
-        print(result)
+        # print(result)
         return process_results(result, model.url_map)
         
     except Exception as e:
@@ -114,7 +114,7 @@ def process_results(result, url_map):
         if url:
             urls.append(url)
 
-    print(urls)
+    # print(urls)
 
     response = {
         "query": result.get('query', ''),
