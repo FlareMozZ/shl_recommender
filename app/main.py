@@ -3,8 +3,6 @@ from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel
 from app.model import AssessmentModel
 import uvicorn
-import logging
-import json
 import urllib.parse
 from langchain.schema import HumanMessage
 from langchain_community.tools import DuckDuckGoSearchResults
@@ -97,6 +95,7 @@ async def recommend_assessment(request: QueryRequest):
             # print(search_results)
             final_query = extracted_jd
 
+        final_query=final_query.lower()
         result = await model.qa_chain.ainvoke(final_query)
         # print(result)
         return process_results(result, model.url_map)
@@ -141,4 +140,6 @@ def process_results(result, url_map):
     return response
 
 if __name__ == "__main__":
-    uvicorn.run(app, host="0.0.0.0", port=8000)
+    import os
+    port = int(os.getenv("PORT", 8000))
+    uvicorn.run("app.main:app", host="0.0.0.0", port=port, reload=False)
