@@ -50,7 +50,7 @@ class AssessmentModel:
                     11. Ensure all required fields are included for each recommendation.""",
                 ),
                 chain_type="stuff",
-                retriever=self.vector_store.as_retriever(search_kwargs={"k": 10}),
+                retriever=self.vector_store.as_retriever(search_kwargs={"k": 9}),
                 return_source_documents=True
             )
 
