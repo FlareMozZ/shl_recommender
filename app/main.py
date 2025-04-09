@@ -130,6 +130,7 @@ def process_results(result, url_map):
                 "metadata": {
                     "id": doc.id,
                     "remote_testing": doc.metadata.get('remote_testing', False)
+                    "adaptive_irt": doc.metadata.get('adaptive_irt', False),
                 }
             }
             for doc in result.get('source_documents', [])

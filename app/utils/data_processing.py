@@ -33,7 +33,8 @@ async def process_data():
         """
         metadata = {
             "url": row['url'],
-            "remote_testing": row['remote_testing']
+            "remote_testing": row['remote_testing'],
+            "adaptive_irt": row['adaptive_irt']
         }
 
         doc = {
@@ -47,7 +48,8 @@ async def process_data():
             "assessment_length": row['assessment_length'],
             "test_types": row['test_types'],
             "downloads": downloads,
-            "remote_testing": row['remote_testing']
+            "remote_testing": row['remote_testing'],
+            "adaptive_irt": row['adaptive_irt']
         }
         return doc
     
