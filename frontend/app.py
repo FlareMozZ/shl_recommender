@@ -3,7 +3,7 @@ from flask import Flask, render_template, request, jsonify
 import requests
 
 app = Flask(__name__)
-BACKEND_URL = "http://localhost:8000/recommend"  # Update if different
+BACKEND_URL = "http://localhost:9091/recommend"  # Update if different
 
 # Modern minimalist CSS
 STYLES = """
