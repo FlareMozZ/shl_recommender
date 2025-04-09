@@ -104,6 +104,10 @@ async def recommend_assessment(request: QueryRequest):
     except Exception as e:
         logger.error(f"Recommendation failed: {str(e)}")
         raise HTTPException(status_code=500, detail=str(e))
+    
+@app.get("/healthy")
+async def health():
+    return {"status": "healthy"}
 
 def process_results(result, url_map):
     source_documents = result.get('source_documents', [])
