@@ -12,7 +12,7 @@ from urllib.parse import urlparse
 
 app = FastAPI()
 model = AssessmentModel()
-logger = logging.getLogger("uvicorn.error")
+# logger = logging.getLogger("uvicorn.error")
 
 app.add_middleware(
     CORSMiddleware,
@@ -78,9 +78,9 @@ class QueryRequest(BaseModel):
 async def startup_event():
     try:
         await model.initialize()
-        logger.info("🚀 Application initialized successfully")
+        # logger.info("🚀 Application initialized successfully")
     except Exception as e:
-        logger.error(f"Initialization failed: {str(e)}")
+        # logger.error(f"Initialization failed: {str(e)}")
         raise
 
 @app.post("/recommend")
@@ -95,14 +95,14 @@ async def recommend_assessment(request: QueryRequest):
                 [HumanMessage(content=search_results)]
             )
             # print(search_results)
-            final_query = search_results
+            final_query = extracted_jd
 
         result = await model.qa_chain.ainvoke(final_query)
         # print(result)
         return process_results(result, model.url_map)
         
     except Exception as e:
-        logger.error(f"Recommendation failed: {str(e)}")
+        # logger.error(f"Recommendation failed: {str(e)}")
         raise HTTPException(status_code=500, detail=str(e))
     
 @app.get("/healthy")
